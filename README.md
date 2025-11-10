@@ -109,7 +109,7 @@ Upon IoT trigger, two frames are extracted:
    - Low pixel difference → “OUT” (bat outside)
 
 **Figure 4:** Decision-making based on threshold difference  
-![Fig.4: Decision Process](figures/arch.png)
+![Fig.4: Decision Process](figures/sarch.png)
 
 ---
 
