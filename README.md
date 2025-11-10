@@ -153,11 +153,8 @@ Upon IoT trigger, two frames are extracted:
 
 ## System Demonstrations
 
-**Figure 6:** Circuit Diagram of IoT System  
-![Fig.6: Circuit Diagram](figures/fig6_circuit_diagram.png)
-
-**Figure 8:** Simulated Test Setup  
-![Fig.8: Simulation Setup](figures/sim.png)
+**Figure 6:** Simulated Test Setup  
+![Fig.6: Simulation Setup](figures/sim.png)
 
 ---
 
@@ -171,8 +168,8 @@ Upon IoT trigger, two frames are extracted:
 | Chitra et al. (2022) | 1–2 sec | 95–96% | Low | Bat-only sensor design |
 | **Our Proposed System** | **~1 sec** | **99% (Precision 0.99)** | **High (~95%)** | IoT + YOLOv8-OBB + OpenCV |
 
-**Figure 9:** Output Visualization of Decision Logic  
-![Fig.9: Output Results](figures/fig9_output.png)
+**Figure 7:** Output Visualization of Decision Logic  
+![Fig.7: Output Results](figures/dec.jpg)
 
 ---
 
