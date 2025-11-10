@@ -1,29 +1,37 @@
-# UmpAIre : IoT-Driven Computer Vision for Run-Out Decisions
+# UmpAIre: IoT-Driven Computer Vision for Run-Out Decisions  
 
-**A novel integration of IoT and Computer Vision for real-time automated run-out decisions in cricket.**
+**A patent-filed innovation integrating IoT and Computer Vision for real-time automated run-out decisions in cricket.**  
 Developed as part of the open-ended IoT project under the *Department of Artificial Intelligence, Amity University Uttar Pradesh.*
 
 ---
 
-## 📘 Overview
+## Overview
 
-**SmartDRS** is an intelligent Decision Review System (DRS) enhancement that automates **run-out decisions** using a fusion of **IoT-triggered event detection** and **AI-driven computer vision**.
-The system minimizes the 3–4 minute manual third-umpire review process to under 3 seconds while improving decision accuracy and consistency.
-
-By combining **Arduino-based sensor detection** with **real-time video analysis**, SmartDRS synchronizes the exact bail-dislogement event with the corresponding video frame, ensuring fast and precise verdicts — *OUT* or *NOT OUT*.
+**UmpAIre** (Smart Decision Review System) is an intelligent solution that automates **run-out decisions** in cricket by combining **IoT-triggered event detection** and **AI-driven computer vision**.  
+The system drastically reduces the traditional 3–4 minute manual third-umpire review process to under **3 seconds**, while eliminating human errors and ensuring objective accuracy.
 
 ---
 
-## 🎯 Aim
+## Aim
 
-To revolutionize the existing DRS process by developing a **low-cost, real-time, and automated** system capable of:
-- Detecting bail dislodgment via **IoT-based triggers**.
-- Capturing synchronized video frames for **computer vision analysis**.
-- Applying **AI segmentation** and **pixel-based thresholding** to decide run-out status automatically.
+To design and implement **UmpAIre: IoT-Driven Computer Vision for Run-Out Decisions**, a system that automates run-out detection using synchronized **IoT signals** and **AI-based video frame analysis**.
+
+### Objectives:
+- Detect bail dislodgment using IoT-based LED sensors.  
+- Capture and analyze synchronized video frames in real-time.  
+- Integrate **AI segmentation** to remove obstructions.  
+- Produce a fast and accurate *OUT/NOT OUT* decision.  
 
 ---
 
-## ⚙️ System Architecture
+## Project Context
+
+Traditional Decision Review Systems (DRS) rely on human judgment and slow manual video review.  
+UmpAIre introduces **real-time synchronization** between IoT hardware and AI algorithms to ensure precision without human intervention.
+
+---
+
+## System Architecture
 
 ```
 LED-Equipped Bails → Arduino Uno → Laptop (AI + OpenCV)
@@ -31,145 +39,182 @@ LED-Equipped Bails → Arduino Uno → Laptop (AI + OpenCV)
                                  DroidCam Feed (Smartphone)
 ```
 
-1. **IoT Trigger:** Bail dislodgment detected via sensors triggers Arduino.
-2. **Signal Transmission:** Arduino sends a timestamp and trigger to the laptop.
-3. **Video Analysis:** Python + OpenCV captures pre- and post-trigger frames.
-4. **AI Segmentation:** Removes irrelevant objects (e.g., umpires, shadows).
-5. **Decision Logic:** Pixel-based adaptive thresholding determines if bat crossed the crease.
-6. **Output:** “OUT” or “NOT OUT” displayed instantly.
+**Figure 1:** UmpAIre System Architecture Diagram  
+![Fig.1: System Architecture](figures/fig1_system_architecture.jpg)
 
 ---
 
-## 🧠 Theoretical Foundation
+## Hardware Requirements
 
-### 1. IoT-Based Bail Detection
-- **Components:** Arduino Uno, LED-equipped bails, push button sensors.
-- **Function:** Detects physical dislodgment, logs timestamp, and sends trigger to the system.
-- **Precision:** Millisecond-level synchronization with the video feed.
+| Component | Description |
+|------------|-------------|
+| **Arduino Uno** | Microcontroller handling IoT inputs and triggers |
+| **Push Button / Sensor** | Detects physical bail dislodgment |
+| **LED-equipped Bails** | Simulates Zing Bails illumination |
+| **Breadboard & Jumper Wires** | For rapid, solder-free prototyping |
+| **Laptop / PC** | Executes video capture and AI analysis |
+| **Smartphone (DroidCam)** | Acts as live feed camera via Wi-Fi |
+| **MicroUSB Cable** | Powers Arduino and transfers serial data |
 
-### 2. Computer Vision + AI
-- **Framework:** OpenCV with lightweight segmentation (e.g., MobileNet).
-- **Steps:**
-  - Capture reference and hit frames.
-  - Define Region of Interest (RoI) across the crease.
-  - Apply perspective transform for geometric consistency.
-  - Segment irrelevant regions (e.g., fielder legs).
-  - Compare frame differences using adaptive thresholding.
-
-### 3. Smartphone Integration
-- **Tool:** DroidCam (via Wi-Fi).
-- **Purpose:** Provides live, high-resolution feed to Python via IP stream.
-- **Advantage:** Cost-effective alternative to professional-grade cameras.
+**Figure 2:** Hardware Architecture of the Project  
+![Fig.2: Hardware Architecture](figures/harch.png)
 
 ---
 
-## 🔧 Hardware Components
+## Software Requirements
 
-| Component | Function |
-|------------|-----------|
-| **Arduino Uno** | Central IoT controller for signal processing |
-| **LED-equipped Bails** | Simulates Zing Bails lighting effect |
-| **Push Button / Sensor** | Detects bail dislodgment |
-| **Breadboard & Jumper Wires** | Hardware prototyping setup |
-| **Laptop / PC** | AI processing and decision-making |
-| **Smartphone (DroidCam)** | Camera for video feed |
-| **MicroUSB Cable** | Power and serial data communication |
+| Software | Role |
+|-----------|------|
+| **Arduino IDE** | Program Arduino in C++ for IoT event detection |
+| **Python** | Video processing and AI inference logic |
+| **OpenCV** | Frame extraction, perspective transformation, thresholding |
+| **AI Segmentation (MobileNet, etc.)** | Detect and mask obstructions |
+| **DroidCam** | Capture live camera feed over Wi-Fi |
 
 ---
 
-## 💻 Software Stack
+## Theoretical Framework
 
-| Layer | Tools Used |
-|--------|-------------|
-| **IoT** | Arduino IDE (C++) |
-| **AI + Vision** | Python, OpenCV, lightweight segmentation (MobileNet-based) |
-| **Camera Interface** | DroidCam over Wi-Fi |
-| **Data Flow** | Serial Communication (Arduino → Laptop) |
+### IoT-Based Bail Dislodgment Detection
 
----
+The Internet of Things (IoT) enables **real-time physical event detection**. When a bail is dislodged, a sensor transmits an electrical signal to the **Arduino Uno**, which timestamps the event and communicates it to the laptop.
 
-## 🚀 Implementation Summary
+This timestamp ensures precise **temporal alignment** with the captured video frames, guaranteeing that the **exact dislodgment frame** is analyzed.
 
-1. **IoT Setup:**
-   Assembled Arduino-based LED bails and sensors; trigger sent to Python script via serial port.
-
-2. **Video Capture:**
-   Smartphone acts as camera via DroidCam → real-time IP video stream to OpenCV.
-
-3. **Frame Extraction:**
-   On IoT signal → capture two frames (reference & dislodgment) for analysis.
-
-4. **Processing & Decision:**
-   - Perspective transform for crease alignment.
-   - AI segmentation for object removal.
-   - Pixel threshold difference → “OUT” or “NOT OUT”.
+**Figure 3:** Demonstration of IoT Bail Dislodgment Detection  
+![Fig.3: IoT Bail Dislodgment](figures/fig3_bail_dislogement.jpg)
 
 ---
 
-## 📊 Results
+### Arduino Uno
+
+- Acts as the **central IoT hub**.
+- Receives input from sensors and controls LEDs.
+- Sends real-time triggers to the processing system.
+- Provides millisecond-level timing accuracy.  
+
+---
+
+### Computer Vision & AI Processing
+
+Upon IoT trigger, two frames are extracted:
+- **Reference Frame** (before bail dislodgment)  
+- **Hit Frame** (after dislodgment)
+
+#### Processing Steps:
+1. Define a **Region of Interest (RoI)** around the crease.
+2. Apply **perspective transform** to normalize geometry.
+3. Run **AI segmentation** to remove background and players.
+4. Compute **absolute pixel difference** between frames.
+5. Apply **adaptive thresholding** to account for lighting.
+6. Derive the decision:
+   - High pixel difference → “NOT OUT” (bat inside)
+   - Low pixel difference → “OUT” (bat outside)
+
+**Figure 4:** Decision-making based on threshold difference  
+![Fig.4: Decision Process](figures/fig4_threshold_difference.jpg)
+
+---
+
+### Smartphone Camera (DroidCam)
+
+- Transforms smartphone into a **wireless webcam**.  
+- Streams live feed (e.g., `http://192.168.x.x:4747/video`).  
+- Captured via OpenCV’s `VideoCapture()` in Python.  
+- Enables cost-effective, flexible positioning of the camera.
+
+**Figure 5:** Simulated Environment of Cricket Ground  
+![Fig.5: Cricket Ground Simulation](figures/sim.png)
+
+---
+
+## Implementation Steps
+
+### 1. IoT Setup
+- Assemble LED-equipped bails and sensors on a breadboard.
+- Program Arduino to send serial triggers upon dislodgment.
+- Connect to laptop via USB for real-time signal transfer.
+
+### 2. Video Capture
+- Connect DroidCam to same Wi-Fi network.
+- Capture feed via IP in OpenCV.
+- Store live buffer frames for real-time analysis.
+
+### 3. Event Synchronization
+- Trigger signal synchronizes bail event with frame capture.
+- Extract **reference** and **trigger** frames from stream.
+
+### 4. Frame Analysis
+- Warp Region of Interest (RoI) using perspective transform.
+- Run AI-based segmentation to isolate bat and crease.
+- Apply adaptive threshold → compute decision output.
+
+### 5. Output
+- Decision displayed instantly: “OUT” or “NOT OUT”.
+
+---
+
+## System Demonstrations
+
+**Figure 6:** Circuit Diagram of IoT System  
+![Fig.6: Circuit Diagram](figures/fig6_circuit_diagram.jpg)
+
+**Figure 8:** Simulated Test Setup  
+![Fig.8: Simulation Setup](figures/sim.png)
+
+---
+
+## 📊 Results & Performance
 
 | Method | Time Taken | Accuracy | Practicality | Notes |
 |--------|-------------|-----------|--------------|-------|
 | Manual DRS | 3–4 min | 90–95% | High | Slow, reliable |
-| Sabarish et al. (2015) | 2–3 sec | >95% | Low | Edge-based |
-| Nirmala Devi et al. (2021) | 2–3 sec | ~98% | Medium | Canny + LED |
-| Chitra et al. (2022) | 1–2 sec | 95–96% | Low | Bat-only sensors |
+| Sabarish et al. (2015) | 2–3 sec | >95% | Low | Edge-based detection |
+| Nirmala Devi et al. (2021) | 2–3 sec | ~98% | Medium | Canny + LED fusion |
+| Chitra et al. (2022) | 1–2 sec | 95–96% | Low | Bat-only sensor design |
 | **Our Proposed System** | **~1 sec** | **99% (Precision 0.99)** | **High (~95%)** | IoT + YOLOv8-OBB + OpenCV |
 
----
-
-## ✅ Achievements
-
-- ⚡ **Decision time reduced** from minutes to seconds
-- 🎯 **Accuracy >99%** using AI + pixel-level vision
-- 💡 **Fully automated** run-out detection prototype
-- 🧩 **Low-cost & scalable** design for professional integration
+**Figure 9:** Output Visualization of Decision Logic  
+![Fig.9: Output Results](figures/fig9_output.jpg)
 
 ---
 
-## 🧩 Precautions & Best Practices
+## Achievements
 
-- Ensure tight wiring and stable power supply.
-- Reset Arduino before re-uploading sketches.
-- Maintain Wi-Fi consistency between devices.
-- Align RoI accurately with the crease.
-- Fine-tune adaptive threshold for different lighting conditions.
-
----
-
-## 🧾 Credits
-
-**Team Members:**
-- Dereddy Hitesh Reddy (Lead, AI & Integration)
-- Chinmay Unnithan (IoT Architecture & Circuit Design)
-- Abner Koshy Thomas (Testing & Calibration)
-- Angel Sunny (Video Capture & Documentation)
-
-**Supervisor:**
-Mr. Jitendra Singh Jadon
-Amity University Uttar Pradesh
+- Reduced decision time from **minutes → seconds**  
+- Achieved **99% accuracy** via AI + Computer Vision  
+- Designed **fully automated, patent-filed prototype**  
+- Demonstrated scalability for professional cricket setups  
 
 ---
 
-## ⚠️ Intellectual Property Notice
+## Precautions & Calibration
 
-> 🔒 The implementation code and core algorithms of SmartDRS are **under patent filing**.
-> Only conceptual and architectural details are shared here for academic and documentation purposes.
-> Unauthorized replication or distribution of the underlying source code is strictly prohibited.
-
----
-
-## 🧰 Future Work
-
-- Integration with **Zing Bails hardware modules**.
-- Enhanced **multi-camera fusion** for crease verification.
-- **Edge AI** deployment on Jetson Nano or Raspberry Pi for on-field inference.
-- Real-time **decision API** for scoreboard integration.
+| Step | Precaution |
+|------|-------------|
+| Wiring | Ensure secure connections; avoid short circuits |
+| Arduino | Reset before sketch uploads to prevent flashing errors |
+| Wi-Fi | Maintain stable connection for real-time streaming |
+| RoI Setup | Align properly across varying lighting conditions |
+| Thresholding | Adjust for field shadows or daylight variance |
 
 ---
 
-## 📫 Contact
+## Intellectual Property Notice
 
-For collaborations or research inquiries:
-📧 **hiteshdereddy@gmail.com**
-🔗 [LinkedIn – Hitesh Reddy Dereddy](https://www.linkedin.com/in/hiteshreddydereddy)
+> **UmpAIre** is under patent filing.  
+> No source code or proprietary algorithms are included here.  
+> Unauthorized use or redistribution of implementation logic is prohibited.
+
+---
+
+## 🚀 Future Enhancements
+
+- Integration with **Zing Bail hardware modules**  
+- **Multi-camera fusion** for better 3D tracking  
+- Edge deployment on **Jetson Nano / Raspberry Pi**  
+- **API integration** for scoreboard automation  
+
+---
+
+© 2025 UmpAIre Research Team – All Rights Reserved.
