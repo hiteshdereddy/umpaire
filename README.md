@@ -40,7 +40,7 @@ LED-Equipped Bails → Arduino Uno → Laptop (AI + OpenCV)
 ```
 
 **Figure 1:** UmpAIre System Architecture Diagram  
-![Fig.1: System Architecture](figures/fig1_system_architecture.jpg)
+![Fig.1: System Architecture](figures/fig1_system_architecture.png)
 
 ---
 
@@ -82,7 +82,7 @@ The Internet of Things (IoT) enables **real-time physical event detection**. Whe
 This timestamp ensures precise **temporal alignment** with the captured video frames, guaranteeing that the **exact dislodgment frame** is analyzed.
 
 **Figure 3:** Demonstration of IoT Bail Dislodgment Detection  
-![Fig.3: IoT Bail Dislodgment](figures/fig3_bail_dislogement.jpg)
+![Fig.3: IoT Bail Dislodgment](figures/fig3_bail_dislogement.png)
 
 ---
 
@@ -112,7 +112,7 @@ Upon IoT trigger, two frames are extracted:
    - Low pixel difference → “OUT” (bat outside)
 
 **Figure 4:** Decision-making based on threshold difference  
-![Fig.4: Decision Process](figures/fig4_threshold_difference.jpg)
+![Fig.4: Decision Process](figures/fig4_threshold_difference.png)
 
 ---
 
@@ -157,7 +157,7 @@ Upon IoT trigger, two frames are extracted:
 ## System Demonstrations
 
 **Figure 6:** Circuit Diagram of IoT System  
-![Fig.6: Circuit Diagram](figures/fig6_circuit_diagram.jpg)
+![Fig.6: Circuit Diagram](figures/fig6_circuit_diagram.png)
 
 **Figure 8:** Simulated Test Setup  
 ![Fig.8: Simulation Setup](figures/sim.png)
@@ -175,7 +175,7 @@ Upon IoT trigger, two frames are extracted:
 | **Our Proposed System** | **~1 sec** | **99% (Precision 0.99)** | **High (~95%)** | IoT + YOLOv8-OBB + OpenCV |
 
 **Figure 9:** Output Visualization of Decision Logic  
-![Fig.9: Output Results](figures/fig9_output.jpg)
+![Fig.9: Output Results](figures/fig9_output.png)
 
 ---
 
