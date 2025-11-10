@@ -40,7 +40,7 @@ LED-Equipped Bails → Arduino Uno → Laptop (AI + OpenCV)
 ```
 
 **Figure 1:** UmpAIre System Architecture Diagram  
-![Fig.1: System Architecture](figures/fig1_system_architecture.png)
+![Fig.1: System Architecture](figures/systemarch.png)
 
 ---
 
@@ -57,7 +57,7 @@ LED-Equipped Bails → Arduino Uno → Laptop (AI + OpenCV)
 | **MicroUSB Cable** | Powers Arduino and transfers serial data |
 
 **Figure 2:** Hardware Architecture of the Project  
-![Fig.2: Hardware Architecture](figures/harch.png)
+![Fig.2: Hardware Architecture](figures/haarch.png)
 
 ---
 
@@ -80,9 +80,6 @@ LED-Equipped Bails → Arduino Uno → Laptop (AI + OpenCV)
 The Internet of Things (IoT) enables **real-time physical event detection**. When a bail is dislodged, a sensor transmits an electrical signal to the **Arduino Uno**, which timestamps the event and communicates it to the laptop.
 
 This timestamp ensures precise **temporal alignment** with the captured video frames, guaranteeing that the **exact dislodgment frame** is analyzed.
-
-**Figure 3:** Demonstration of IoT Bail Dislodgment Detection  
-![Fig.3: IoT Bail Dislodgment](figures/fig3_bail_dislogement.png)
 
 ---
 
@@ -112,7 +109,7 @@ Upon IoT trigger, two frames are extracted:
    - Low pixel difference → “OUT” (bat outside)
 
 **Figure 4:** Decision-making based on threshold difference  
-![Fig.4: Decision Process](figures/fig4_threshold_difference.png)
+![Fig.4: Decision Process](figures/arch.png)
 
 ---
 
