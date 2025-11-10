@@ -114,7 +114,7 @@ LED-Equipped Bails → Arduino Uno → Laptop (AI + OpenCV)
 | Sabarish et al. (2015) | 2–3 sec | >95% | Low | Edge-based |
 | Nirmala Devi et al. (2021) | 2–3 sec | ~98% | Medium | Canny + LED |
 | Chitra et al. (2022) | 1–2 sec | 95–96% | Low | Bat-only sensors |
-| **Our Proposed System** | **~3 sec** | **99% (Precision 0.99)** | **High (~95%)** | IoT + YOLOv8-OBB + OpenCV |
+| **Our Proposed System** | **~1 sec** | **99% (Precision 0.99)** | **High (~95%)** | IoT + YOLOv8-OBB + OpenCV |
 
 ---
 
